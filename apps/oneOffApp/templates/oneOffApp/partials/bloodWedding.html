@@ -1,0 +1,146 @@
+{% load staticfiles %}
+<div class="row">
+  <div class="col s10 m10 offset-m1 offset-s1 white">
+    <h5 class = "black-text">Join us for a bilingual multidisciplinary telling of the Spanish play, Blood Wedding/Bodas de Sangre, by Federico García Lorca. With live music and dance. Performed in Ballard Commons, Othello, Roxhill, Duwamish Waterway parks and at El Centro de la Raza.<i>For all ages.</i><b>Free</b>.
+    <h5>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col s10 m5 offset-m1 offset-s1">
+    <div class="card">
+
+      <div class="card-content">
+        <h3>Shows</h3>
+        <b>Ballard Commons Park:</b>
+        <p>
+          5701 22nd Ave NW, Seattle, WA 98107
+        </p>
+        <ul>
+          <li>Fri 8/5/2016 6pm</li>
+          <li>Fri 8/12/2016 6pm</li>
+          <li>Fri 8/26/2016 6pm</li>
+          <button id = 'ballard'type="button" name="button">Directions</button>
+        </ul>
+        <b> El Centro de la Raza 2524</b>
+        <p>
+          16th Ave S, Seattle, WA 98144
+        </p>
+        <ul>
+          <li>Sat 8/6/2016 6pm</li>
+          <li>Sun 8/7/2016 6pm</li>
+          <button id = 'elcentro' type="button" name="button">Directions</button>
+        </ul>
+        <b> Roxhill Park</b>
+        <p>2850 SW Roxbury St, Seattle, WA 98126</p>
+        <ul>
+          <li>Sat 8/13/2016 6pm</li>
+          <li>Sun 8/14/2016 6pm</li>
+          <button id = 'roxhill' type="button" name="button">Directions</button>
+        </ul>
+        <b>Othello Playground</b>
+        <p>
+          4351 S Othello St, Seattle, WA 98118
+        </p>
+        <ul>
+          <li>Sat 8/20/2016 6pm</li>
+          <li>Sun 8/21/2016 6pm</li>
+          <button id = 'othello' type="button" name="button">Directions</button>
+        </ul>
+        <b>Duwamish Waterway</b>
+        <p>
+          Park 7900 10th Ave S, Seattle, WA 98108
+        </p>
+        <ul>
+          <li>Sat 8/27/2016 6pm</li>
+          <button id = 'duwamish' type="button" name="button">Directions</button>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+    <div class="col s10 m5  offset-s1">
+      <div class="card" >
+        <div class="card-image">
+          <img src="{% static 'oneOffApp/images/LoveTriangle.jpg' %}" id = "right_side">
+          <span class="card-title">BloodWedding</span>
+        </div>
+        <div class="card-content">
+
+            <p>
+          Directed by <i>Tina Polzin</i> with <i>Christen Gee, Jordan Taylor, Michael Blum, Angela Maestas, Meg Savlov, Carolynne Wilcox, Marissa Castillo, Maddy Noonan, Alex Huffman, and Miranda Sieg</i>. Creative team includes <i>Jonathan Shue (music director), Amy Johnson (choreography), Danielle Perkus (stage management), Brandon Estrella (scenic design) and Melinda Hare (costume design)</i>.  Produced by <i>Ana Maria Campoy, Matt Sherrill and Tina Polzin</i>.
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s10 m10 offset-m1 offset-s1">
+      <div class="card">
+        <div class="card-image">
+          <div class="" id = "map">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+     var parks = {
+       BallardCommons:{lat:47.6704585, lng: -122.3876794},
+       ElCentrodelaRaza:{lat:47.5803386,lng:-122.3135185},
+       RoxhillPark:{lat:47.5174169,lng:-122.3714029},
+       OthelloPlayground:{lat:47.5360992,lng:-122.28027},
+       DuwamishWaterwayPark:{lat:47.530989,lng:-122.322025}
+     }
+     var target = 'BallardCommons';
+     var map;
+     function initMap() {
+       map = new google.maps.Map(document.getElementById('map'), {
+         center: parks[target],
+         zoom: 16
+       });
+     }
+
+     function sizeImages2(){
+       var mh = $('#right_side').height();
+      //  var eh = $('#right_side').width();
+      //  $("#map").css({'width':eh});
+       $("#map").css({'height':mh});
+     }
+    //  $(document).ready(function(){
+    $(window).resize(sizeImages2);
+      sizeImages2();
+    $('#ballard').click(function(){
+      target= 'BallardCommons';
+      window.open("https://www.google.com/maps/place/Ballard+Commons+Park/@47.6706391,-122.3876939,17z");
+      map.setCenter(parks[target]);
+    });
+    $('#elcentro').click(function(){
+      target= 'ElCentrodelaRaza';
+      window.open("https://www.google.com/maps/place/El+Centro+De+La+Raza,+2524+16th+Ave+S,+Seattle,+WA+98144/@47.5803422,-122.3135132,17z");
+      map.setCenter(parks[target]);
+    });
+    $('#roxhill').click(function(){
+      window.open("https://www.google.com/maps/place/Roxhill+Park/@47.5174205,-122.3713976,17z");
+      target= 'RoxhillPark';
+      map.setCenter(parks[target]);
+    });
+    $('#othello').click(function(){
+      window.open("https://www.google.com/maps/place/Othello+Playground/@47.5361028,-122.2802647,17z");
+      target= 'OthelloPlayground';
+      map.setCenter(parks[target]);
+    });
+    $('#duwamish').click(function(){
+      window.open("https://www.google.com/maps/place/Duwamish+Waterway+Park/@47.5309926,-122.3220197,17z");
+      target= 'DuwamishWaterwayPark';
+      map.setCenter(parks[target]);
+    });
+
+
+
+   </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArUZqIKS9sDcdvCZRoHtbENmqKQfeDNac&callback=initMap"
+   async defer></script>
