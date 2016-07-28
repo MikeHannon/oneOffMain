@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import keys
 # Create your views here.
 def index(request):
     return render(request,'oneOffApp/index.html')
@@ -14,4 +14,7 @@ def ourTeam(request):
     return render(request,'oneOffApp/partials/theTeam.html')
 
 def bloodWedding(request):
-    return render(request,'oneOffApp/partials/bloodWedding.html')
+    context = {
+    'mainKey':key.returnKey()
+    }
+    return render(request,'oneOffApp/partials/bloodWedding.html',context)
