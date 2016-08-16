@@ -1,0 +1,13 @@
+.blood {
+  background-color: #890011;
+}
+
+.card-image {
+  min-height: 30%;
+}
+
+#anna p, #matt p{
+  margin-bottom:0;
+  border-bottom:0;
+  padding-bottom:0;
+}

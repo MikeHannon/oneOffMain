@@ -15,6 +15,6 @@ def ourTeam(request):
 
 def bloodWedding(request):
     context = {
-    'mainKey':key.returnKey()
+    'mainKey':keys.returnKey()
     }
     return render(request,'oneOffApp/partials/bloodWedding.html',context)
